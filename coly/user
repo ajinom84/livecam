@@ -1,0 +1,78 @@
+function CDTracking(clickUrl, pixels) {
+    var obj = this;
+
+    var fillUserId = function (clickUrl) {
+        return clickUrl.replace("#user_id#", "04e5b486b65142caa221d9445512f58c");
+    };
+
+    this.redirect = function () {
+        document.body.innerHTML = document.body.innerHTML.replace(/us=00000000000000000000000000000000/g, "us=04e5b486b65142caa221d9445512f58c");
+    }
+
+    var waitLoaded = pixels.length;
+
+    var oneLoaded = function () {
+        if (--waitLoaded <= 0) {
+            obj.redirect();
+
+            if (typeof obj.timerId !== "undefined" && obj.timerId > 0) {
+                window.clearTimeout(obj.timerId);
+            }
+        }
+    }
+
+    var loadImage = function (url) {
+        var img = new Image(0, 0);
+        img.onload = img.onerror = oneLoaded;
+        img.src = url;
+    }
+
+    var loadScript = function (url) {
+        var s = document.createElement("script");
+        s.onload = s.onerror = oneLoaded;
+        s.src = url;
+        document.body.appendChild(s);
+    }
+
+    var loadPixel = function (url, type) {
+        if (type === "script") {
+            return loadScript(url);
+        }
+
+        return loadImage(url);
+    }
+
+    var setCookie = function(cname, cvalue, maxAgeCookie) {
+        if (cname === "" || cvalue === "") {
+            return;
+        }
+        var maxAge = "max-age="+maxAgeCookie;
+        document.cookie = cname + "=" + cvalue + ";" + maxAge + ";path=/";
+    };
+
+    var setCookieV2 = function(cnameV2, cvalueV2, maxAgeCookieV2) {
+        if (cnameV2 === "" || cnameV2 === "") {
+            return;
+        }
+
+        var maxAgeV2 = "max-age="+maxAgeCookieV2;
+        document.cookie = cnameV2 + "=" + cvalueV2 + ";" + maxAgeV2 + ";path=/; SameSite=None; Secure";
+    };
+
+    setCookie("gdm_suid_v1_1_001", "0Hh97aUs5YSKY6syAxdMwV16K6XvVX8MwpgerIuuDVGgqDFatz9MeFJl1kFobdiJ", 7776000);
+    setCookieV2("gdm_suid_v2_1_001", "0Hh97aUs5YSKY6syAxdMwV16K6XvVX8MwpgerIuuDVGgqDFatz9MeFJl1kFobdiJ", 7776000);
+
+    this.run = function (timeout) {
+        if (waitLoaded == 0) {
+            return obj.redirect();
+        }
+
+        for (var i = 0; i < pixels.length; i++) {
+            loadPixel(fillUserId(pixels[i].src), pixels[i].type);
+        }
+
+        obj.timerId = window.setTimeout(function () {
+            obj.redirect();
+        }, timeout);
+    };
+}

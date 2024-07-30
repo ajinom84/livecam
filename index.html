@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="/coly/jquery-2.2.4.min.js.download"></script>
+    <script src="/coly/translates.js.download"></script>
+    <script src="/coly/backoffer.js.download"></script>
+    <link rel="stylesheet" href="/coly/style.css">
+    <link rel="shortcut icon" href="https://cdn.smrt-content.com/assets/950/other/favicon.ico" type="image/x-icon">
+<script type="text/javascript" src="/coly/user"></script>
+<script type="text/javascript">
+    (function(destination, pixelsJson, entityPixels, timeout) {
+        var pixelsArr = [];
+
+        var addPixels = function (pixels) {
+            if (Array.isArray(pixels)) {
+                var re = /\.js($|\?|#)/;
+                for (var i = 0; i < pixels.length; i++) {
+                    var pixel = pixels[i];
+                    if (typeof pixel === "string") {
+                        pixelsArr.push({ src: pixel, type: re.test(pixel) ? "js" : "img" });
+                    }
+                }
+            }
+        }
+
+        try {
+            addPixels(entityPixels);
+
+            var pixels = JSON.parse(pixelsJson);
+
+            addPixels(pixels);
+
+            if (typeof CDTracking !== "undefined") {
+                new CDTracking(destination, pixelsArr).run(timeout);
+            }
+
+        } catch(e) {
+            console.error(e);
+        }
+
+    })("/&x=1", "[]", [], 1000);
+
+</script>
+</head>
+<body>
+ <div class="main">
+  <div class="stepbox">
+    <div class="step step-1">
+      <div class="step__inner">
+        <div class="step__header">
+          <h1>WARNING!</h1>
+        </div>
+        <div class="step__body">
+          <p>You will see nude photos. Please be discreet.</p>
+        </div>
+        <div class="step__footer">
+          <div class="btnbox">
+            <a class="btn btn--primary next btn-next" href="javascript:void(0)">Next</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step step-9 current">
+      <div class="step__inner">
+        <div class="step__header">
+          <h1>TELEGRAM DATING</h1>
+        </div>
+        <div class="step__body">
+          <p>premium girls only for you</p>
+          <p>click "CONTINUE" to see them</p>		  
+        </div>
+        <div class="step__footer">
+          <div class="btnbox">
+            <a class="btn btn--primary btn-fin btn-continue btn-fin" href="https://4.fo/ajakayakkiyek">CONTINUE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="progress">
+  <div class="bar" style="width: 44.2654%;">
+  </div>
+</div>
+<div class="videobgbox">
+  <video class="video" loop="" autoplay="" muted="" playsinline="">
+    <source src="video/1.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="coub">
+  <h2>
+   <p style="text-align: right;">
+    official dating site                    
+  </h2>
+  <p style="text-align: right;">
+    by @TELEGRAM             
+  </p>
+</div>
+<script type="text/javascript">
+      /*<![CDATA[*/    (function(w){
+        w.backOfferUrl = '/&x=1'    }
+                        (window));
+      /*]]>*/  
+    </script>
+
+</body></html>
